@@ -16,7 +16,7 @@ class Joke
         }
 
         // Fallback ke koleksi lokal untuk bahasa Indonesia (id)
-        return static::formatForWeb(static::jokes()->random());
+        return static::jokes()->random();
     }
 
     protected static function fetchFromExternalApi()
@@ -29,18 +29,13 @@ class Joke
             ])->get('https://icanhazdadjoke.com/');
 
             if ($response->successful()) {
-                return static::formatForWeb($response->json()['joke']);
+                return $response->json()['joke'];
             }
         } catch (\Exception $e) {
             // Jika API down, ambil dari cadangan lokal
         }
 
-        return static::formatForWeb('Why did the web developer walk out of a restaurant? Because of the table layout.');
-    }
-
-    protected static function formatForWeb($quote)
-    {
-        return sprintf("<p class='font-medium italic'>“ %s ”</p>", trim($quote));
+        return static::jokes()->random();
     }
 
     public static function jokes()
