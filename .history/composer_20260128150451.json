@@ -1,12 +1,10 @@
 {
     "name": "salmanalmajali/jokes-widget",
-    "description": "A fun Filament PHP plugin to display Dad Jokes (Bahasa Indonesia & English) via API. Make your filament dashboard tell a joke",
+    "description": "Make your filament dashboard tell a joke",
     "keywords": [
         "SalmanAlmajali",
         "laravel",
-        "jokes-widget",
-        "filament",
-        "widget"
+        "jokes-widget"
     ],
     "homepage": "https://github.com/salmanalmajali/jokes-widget",
     "support": {

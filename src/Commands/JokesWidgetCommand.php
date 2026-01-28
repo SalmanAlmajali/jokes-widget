@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace SalmanAlmajali\JokesWidget\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class JokesWidgetCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'jokes-widget';
 
     public $description = 'My command';
 

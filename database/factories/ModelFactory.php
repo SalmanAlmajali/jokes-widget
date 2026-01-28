@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Database\Factories;
+namespace SalmanAlmajali\JokesWidget\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

@@ -6,7 +6,7 @@
         "laravel",
         "jokes-widget",
         "filament",
-        "widget"
+        "widget",
     ],
     "homepage": "https://github.com/salmanalmajali/jokes-widget",
     "support": {

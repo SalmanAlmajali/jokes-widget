@@ -1,20 +1,22 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace SalmanAlmajali\JokesWidget;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class JokesWidgetPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'jokes-widget';
     }
 
     public function register(Panel $panel): void
     {
-        //
+        $panel->widgets([
+            JokesWidget::class,
+        ]);
     }
 
     public function boot(Panel $panel): void
