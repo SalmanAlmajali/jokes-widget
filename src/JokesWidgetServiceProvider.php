@@ -10,11 +10,11 @@ use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
+use SalmanAlmajali\JokesWidget\Commands\JokesWidgetCommand;
+use SalmanAlmajali\JokesWidget\Testing\TestsJokesWidget;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use SalmanAlmajali\JokesWidget\Commands\JokesWidgetCommand;
-use SalmanAlmajali\JokesWidget\Testing\TestsJokesWidget;
 
 class JokesWidgetServiceProvider extends PackageServiceProvider
 {
