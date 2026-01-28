@@ -8,7 +8,7 @@ class JokesWidget extends Widget
 {
     protected static ?int $sort = -2;
 
-    protected string $view = 'bapack-jokes::widgets.joke-widget';
+    protected string $view = 'jokes-widget::widgets.joke-widget';
 
     public $joke;
 
