@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/salmanalmajali/jokes-widget.svg?style=flat-square)](https://packagist.org/packages/salmanalmajali/jokes-widget)
 [![License](https://img.shields.io/packagist/l/salmanalmajali/jokes-widget.svg?style=flat-square)](LICENSE.md)
 
-Add a touch of humor to your Filament Dashboard! This package displays jokes tailored to your application's language settings.
+Add a touch of fun and lightweight Filament PHP widget that brings "Dad Jokes" humor directly to your dashboard and make your Filament Dashboard tell a joke. This plugin is designed to add a bit of humor to the administrative experience by displaying jokes tailored to your application's language settings.
 
 ## Key Features
 - **Automatic Localization**: 
