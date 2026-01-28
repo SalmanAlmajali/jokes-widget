@@ -42,11 +42,13 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-## Localization
+## Localization and Screenshoot
 
 The widget automatically detects your application's locale:
 - If the locale is set to id, the widget uses the local joke collection.
+  <img width="1269" height="732" alt="Screenshot 2026-01-28 225903" src="https://github.com/user-attachments/assets/eaf84789-4c67-44a7-b842-7cb58ffcdf59" />
 - or any other locale (default en), the widget fetches data from the external API.
+  <img width="1266" height="731" alt="Screenshot 2026-01-28 230135" src="https://github.com/user-attachments/assets/e6708522-0cba-4099-860a-0fd7923fd6dd" />
 
 ## Testing
 
