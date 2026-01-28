@@ -41,8 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SalmanAlmajali\\JokesWidget\\": "src/",
-            "SalmanAlmajali\\JokesWidget\\Database\\Factories\\": "database/factories/"
+            "SalmanAlmajali\\JokesWidget\\": "src/"
         }
     },
     "autoload-dev": {
@@ -68,10 +67,7 @@
         "laravel": {
             "providers": [
                 "SalmanAlmajali\\JokesWidget\\JokesWidgetServiceProvider"
-            ],
-            "aliases": {
-                "JokesWidget": "SalmanAlmajali\\JokesWidget\\Facades\\JokesWidget"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
