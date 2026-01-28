@@ -5,7 +5,7 @@ use SalmanAlmajali\JokesWidget\Joke;
 
 it('returns an english joke from API when locale is en', function () {
     app()->setLocale('en');
-    
+
     Http::fake([
         'icanhazdadjoke.com/*' => Http::response(['joke' => 'Funny API Joke'], 200),
     ]);
