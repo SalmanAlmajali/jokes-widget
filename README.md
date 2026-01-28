@@ -31,7 +31,7 @@ php artisan vendor:publish --tag="jokes-widget-translations"
 Register the plugin in your Filament Panel Provider (typically `AdminPanelProvider.php`):
 
 ```bash
-use SalmanAlmajali\JokesWidget\JokesWidgetPlugin;
+use SalmanAlmajali\JokesWidget\JokesWidget;
 
 public function panel(Panel $panel): Panel
 {
