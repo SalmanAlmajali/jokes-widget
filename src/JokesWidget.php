@@ -19,8 +19,8 @@ class JokesWidget extends Widget
 
     public function tellMeAnotherJoke()
     {
-        $this->joke = "... loading some laughs ...";
-        
+        $this->joke = '... loading some laughs ...';
+
         $this->joke = Joke::tellAJoke();
     }
 }
