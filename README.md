@@ -1,10 +1,74 @@
 # Filament Jokes Widget 🎤
 
-Add some laughs to your Filament Dashboard! Supports English (via API) and Bahasa Indonesia (local bapak-bapak jokes).
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/salmanalmajali/jokes-widget.svg?style=flat-square)](https://packagist.org/packages/salmanalmajali/jokes-widget)
+[![Total Downloads](https://img.shields.io/packagist/dt/salmanalmajali/jokes-widget.svg?style=flat-square)](https://packagist.org/packages/salmanalmajali/jokes-widget)
+[![License](https://img.shields.io/packagist/l/salmanalmajali/jokes-widget.svg?style=flat-square)](LICENSE.md)
+
+Add a touch of humor to your Filament Dashboard! This package displays jokes tailored to your application's language settings.
+
+## Key Features
+- **Automatic Localization**: 
+    - **Bahasa Indonesia**: Displays a collection of iconic local "bapak-bapak" jokes..
+    - **English**: Dynamically fetches fresh dad jokes from the `icanhazdadjoke.com` API.
+- **Interactive Refresh**: Includes a button to instantly swap jokes without reloading the page using Livewire.
+- **Filament V4 and V5 Ready**: Optimized to run seamlessly on the latest version of Filament.
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require salmanalmajali/jokes-widget
+```
+(Optional) Publish the translation files if you wish to customize the widget text:
+
+```bash
+php artisan vendor:publish --tag="jokes-widget-translations"
+```
+
+## Usage
+
+Register the plugin in your Filament Panel Provider (typically `AdminPanelProvider.php`):
+
+```bash
+use SalmanAlmajali\JokesWidget\JokesWidgetPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            JokesWidgetPlugin::make(),
+        ]);
+}
+```
+
+## Localization
+
+The widget automatically detects your application's locale:
+- If the locale is set to id, the widget uses the local joke collection.
+- or any other locale (default en), the widget fetches data from the external API.
+
+## Testing
+
+Run the package tests using Pest:
+
+```bash
+composer test
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Security
+
+If you discover any security-related issues, please email undermod007@gmail.com instead of using the issue tracker.
+
+## Credits
+
+- [Salman Al Majali](https://github.com/SalmanAlmajali)
+- [All Contributors](../../contributors)
