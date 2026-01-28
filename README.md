@@ -36,8 +36,8 @@ use SalmanAlmajali\JokesWidget\JokesWidgetPlugin;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->plugins([
-            JokesWidgetPlugin::make(),
+        ->widgets([
+            JokesWidget::class,
         ]);
 }
 ```
