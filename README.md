@@ -8,7 +8,7 @@ Add a touch of fun and lightweight Filament PHP widget that brings "Dad Jokes" h
 
 ## Key Features
 - **Automatic Localization**: 
-    - **Bahasa Indonesia**: Displays a collection of iconic local "bapak-bapak" jokes..
+    - **Bahasa Indonesia**: Displays a collection of iconic local "bapak-bapak" jokes. Collcted from [Candaan API Repository](https://github.com/ardhptr21/candaan-api/) by [Ardhi Putra](https://github.com/ardhptr21)
     - **English**: Dynamically fetches fresh dad jokes from the `icanhazdadjoke.com` API.
 - **Interactive Refresh**: Includes a button to instantly swap jokes without reloading the page using Livewire.
 - **Filament V4 and V5 Ready**: Optimized to run seamlessly on the latest version of Filament.
@@ -73,4 +73,5 @@ If you discover any security-related issues, please email undermod007@gmail.com 
 ## Credits
 
 - [Salman Al Majali](https://github.com/SalmanAlmajali)
+- [Ardhi Putra](https://github.com/ardhptr21)
 - [All Contributors](../../contributors)
