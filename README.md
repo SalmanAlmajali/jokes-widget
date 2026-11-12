@@ -30,7 +30,21 @@ php artisan vendor:publish --tag="jokes-widget-translations"
 
 Register the plugin in your Filament Panel Provider (typically `AdminPanelProvider.php`):
 
-```bash
+```php
+use SalmanAlmajali\JokesWidget\JokesWidgetPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            JokesWidgetPlugin::make(),
+        ]);
+}
+```
+
+Alternatively, you can register the widget directly:
+
+```php
 use SalmanAlmajali\JokesWidget\JokesWidget;
 
 public function panel(Panel $panel): Panel
@@ -49,6 +63,38 @@ The widget automatically detects your application's locale:
   <img width="1269" height="732" alt="Screenshot 2026-01-28 225903" src="https://github.com/user-attachments/assets/eaf84789-4c67-44a7-b842-7cb58ffcdf59" />
 - or any other locale (default en), the widget fetches data from the external API.
   <img width="1266" height="731" alt="Screenshot 2026-01-28 230135" src="https://github.com/user-attachments/assets/e6708522-0cba-4099-860a-0fd7923fd6dd" />
+
+## Custom Jokes (Markdown)
+
+Write your own jokes in a Markdown file. Every list item is one joke; indented lines continue it. Headings and paragraphs are ignored, and inline Markdown (`**bold**`, `_italic_`, links) is rendered. Raw HTML is escaped.
+
+```markdown
+# Office jokes
+
+- Why do programmers prefer dark mode? Because light attracts **bugs**.
+- I told my boss I needed a raise.
+  He said: "Have you tried turning it off and on again?"
+1. Numbered lists work too.
+```
+
+Point the plugin at the file:
+
+```php
+JokesWidgetPlugin::make()
+    ->jokesFile(resource_path('jokes.md')),
+```
+
+Or use one file per locale (`en_US` falls back to `en`). Locales without a file keep the default behaviour above:
+
+```php
+JokesWidgetPlugin::make()
+    ->jokesFile([
+        'id' => resource_path('jokes/id.md'),
+        'en' => resource_path('jokes/en.md'),
+    ]),
+```
+
+When a file is set for the current locale, the external API is not called.
 
 ## Testing
 

@@ -7,31 +7,68 @@ use Illuminate\Support\Facades\Http;
 
 class Joke
 {
-    public static function tellAJoke()
+    public static function tellAJoke(?string $jokesFile = null)
     {
-        $locale = app()->getLocale();
+        if ($jokesFile !== null) {
+            $custom = static::fromMarkdown($jokesFile);
 
-        if ($locale === 'en') {
-            return static::fetchFromExternalApi();
+            if ($custom->isNotEmpty()) {
+                return $custom->random();
+            }
         }
 
-        // Fallback ke koleksi lokal untuk bahasa Indonesia (id)
-        return static::jokes()->random();
+        $locale = app()->getLocale();
+
+        if (str_starts_with($locale, 'id')) {
+            return static::jokes()->random();
+        }
+
+        return static::fetchFromExternalApi();
+    }
+
+    /**
+     * Every list item (`-`, `*`, `+` or `1.`) is one joke; indented lines continue it.
+     * Headings and paragraphs are ignored, so the file can carry its own notes.
+     */
+    public static function fromMarkdown(string $path): Collection
+    {
+        if (! is_file($path)) {
+            logger()->warning("[jokes-widget] Jokes file not found: {$path}");
+
+            return new Collection;
+        }
+
+        $jokes = [];
+        $current = null;
+
+        foreach (preg_split('/\R/', file_get_contents($path)) as $line) {
+            if (preg_match('/^ {0,3}(?:[-*+]|\d+[.)])\s+(.+)$/', $line, $m)) {
+                $jokes[] = trim($m[1]);
+                $current = array_key_last($jokes);
+            } elseif ($current !== null && trim($line) !== '' && preg_match('/^\s/', $line)) {
+                // shortcut: nested lists are folded into their parent joke as text, parse a real AST if users need them.
+                $jokes[$current] .= "\n" . trim($line);
+            } elseif (trim($line) !== '') {
+                $current = null;
+            }
+        }
+
+        return new Collection($jokes);
     }
 
     protected static function fetchFromExternalApi()
     {
         try {
             // Mengambil joke bahasa Inggris dari API eksternal
-            $response = Http::withHeaders([
+            $response = Http::timeout(3)->withHeaders([
                 'Accept' => 'application/json',
                 'User-Agent' => 'Filament-Jokes-Widget-Plugin (https://github.com/SalmanAlmajali/jokes-widget)',
             ])->get('https://icanhazdadjoke.com/');
 
-            if ($response->successful()) {
+            if ($response->successful() && isset($response->json()['joke'])) {
                 return $response->json()['joke'];
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             // Jika API down, ambil dari cadangan lokal
         }
 

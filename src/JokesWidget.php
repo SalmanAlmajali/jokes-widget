@@ -19,8 +19,12 @@ class JokesWidget extends Widget
 
     public function tellMeAnotherJoke()
     {
-        $this->joke = '... loading some laughs ...';
+        $panel = filament()->getCurrentPanel();
 
-        $this->joke = Joke::tellAJoke();
+        $jokesFile = $panel?->hasPlugin('jokes-widget')
+            ? $panel->getPlugin('jokes-widget')->getJokesFile()
+            : null;
+
+        $this->joke = Joke::tellAJoke($jokesFile);
     }
 }
